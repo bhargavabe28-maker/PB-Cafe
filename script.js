@@ -184,6 +184,32 @@ document.addEventListener('DOMContentLoaded', () => {
         orderForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            // Gather order details
+            const itemName = modalItemName.textContent.replace('Order: ', '');
+            const activeTypeBtn = document.querySelector('.type-btn.active');
+            const orderType = activeTypeBtn ? activeTypeBtn.textContent : 'Unknown';
+            const tableNo = document.getElementById('table-number').value;
+            const address = document.getElementById('address').value;
+            const activePayBtn = document.querySelector('.pay-method-btn.active');
+            const paymentMethod = activePayBtn ? activePayBtn.textContent : 'Unknown';
+
+            // Construct WhatsApp message
+            let waMessage = `*New Order from PB Cafe!* ☕\n\n`;
+            waMessage += `*Item:* ${itemName}\n`;
+            waMessage += `*Price:* ₹${currentPrice}\n`;
+            waMessage += `*Type:* ${orderType}\n`;
+            
+            if (orderType === 'Dine-In') {
+                waMessage += `*Table No:* ${tableNo}\n`;
+            } else {
+                waMessage += `*Address:* ${address}\n`;
+            }
+            
+            waMessage += `*Payment Method:* ${paymentMethod}\n`;
+
+            const encodedMessage = encodeURIComponent(waMessage);
+            const whatsappUrl = `https://wa.me/919849681592?text=${encodedMessage}`;
+            
             // Show loading
             step2Payment.classList.add('hidden');
             paymentLoading.classList.remove('hidden');
@@ -192,6 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 paymentLoading.classList.add('hidden');
                 paymentSuccess.classList.remove('hidden');
+                
+                // Open WhatsApp in a new tab
+                window.open(whatsappUrl, '_blank');
                 
                 // Auto close after 3 seconds
                 setTimeout(() => {
