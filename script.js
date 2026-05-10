@@ -146,11 +146,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Go to Payment Step
     proceedToPayBtn.addEventListener('click', () => {
-        // Simple HTML5 validation check
-        if (!orderForm.checkValidity()) {
-            orderForm.reportValidity();
-            return;
-        }
+        // Only validate fields in Step 1
+        const inputs = step1Details.querySelectorAll('input[required], textarea[required]');
+        let valid = true;
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                input.reportValidity();
+                valid = false;
+            }
+        });
+
+        if (!valid) return;
+
         step1Details.classList.add('hidden');
         step2Payment.classList.remove('hidden');
     });
@@ -178,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
 
     // --- Admin & Firebase Dashboard Logic ---
     const adminLink = document.getElementById('admin-link');
@@ -291,32 +297,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const paymentMethod = activePayBtn ? activePayBtn.textContent : 'Unknown';
             const transactionId = document.getElementById('transaction-id').value;
 
-            // Save to Firebase (Real-time update)
-            try {
-                await saveOrderToFirebase({
-                    item: itemName,
-                    price: currentPrice,
-                    type: orderType,
-                    tableNo: tableNo,
-                    address: address,
-                    paymentMethod: paymentMethod,
-                    transactionId: transactionId
-                });
-                console.log("Order submitted successfully");
-            } catch (error) {
-                console.error("Critical error during order submission:", error);
-                // We still show success to the user but log the error
-            }
+            // Save to Firebase
+            await saveOrderToFirebase({
+                item: itemName,
+                price: currentPrice,
+                type: orderType,
+                tableNo: tableNo,
+                address: address,
+                paymentMethod: paymentMethod,
+                transactionId: transactionId
+            });
 
-            // Immediate Action: Show success state
+            // Immediate Action: Show success
             step2Payment.classList.add('hidden');
             paymentSuccess.classList.remove('hidden');
 
-            // Auto close modal after 3 seconds
+            // Auto close after 3 seconds
             setTimeout(() => {
                 hideModal();
-                // Clear form for next order
-                if (orderForm) orderForm.reset();
             }, 3000);
         });
     }
