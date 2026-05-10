@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -57,7 +59,7 @@
                 <div class="menu-grid" id="menu-grid">
                     <!-- ================= COFFEE CATEGORY ================= -->
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_the_araku_signature_latte.jpg" alt="The Araku Signature Latte" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=400&q=80" alt="The Araku Signature Latte" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Araku Signature Latte</h4>
                             <p>Smooth, locally sourced, and naturally sweet.</p>
@@ -67,7 +69,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_banjara_hills_dark_roast.jpg" alt="Banjara Hills Dark Roast" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=400&q=80" alt="Banjara Hills Dark Roast" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Banjara Hills Dark Roast</h4>
                             <p>A bold, intense cup perfect for the city's morning rush.</p>
@@ -77,7 +79,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/coffee.png" alt="Velvet Flat White" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1578314675249-a694eb286151?auto=format&fit=crop&w=400&q=80" alt="Velvet Flat White" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Velvet Flat White</h4>
                             <p>A silky, high-end version of a latte with a stronger espresso hit.</p>
@@ -87,7 +89,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_malabar_spice_cappuccino.jpg" alt="Malabar Spice Cappuccino" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1534687941688-651ccaafbff8?auto=format&fit=crop&w=400&q=80" alt="Malabar Spice Cappuccino" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Malabar Spice Cappuccino</h4>
                             <p>Using Monsoon Malabar beans with a hint of local cinnamon.</p>
@@ -97,7 +99,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_artisanal_pour_over.jpg" alt="Artisanal Pour-Over" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=80" alt="Artisanal Pour-Over" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Artisanal Pour-Over</h4>
                             <p>For the true coffee nerd; features a rotating single-origin bean.</p>
@@ -107,7 +109,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_midnight_cold_brew.jpg" alt="Midnight Cold Brew" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80" alt="Midnight Cold Brew" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Midnight Cold Brew</h4>
                             <p>Steeped for 18 hours for a smooth, chocolatey finish.</p>
@@ -117,7 +119,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_hyderabad_hazelnut_frapp_.jpg" alt="Hyderabad Hazelnut Frappé" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80" alt="Hyderabad Hazelnut Frappé" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Hyderabad Hazelnut Frappé</h4>
                             <p>A crowd favorite—rich, icy, and nutty.</p>
@@ -127,7 +129,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/drink.png" alt="Iced Sea Salt Mocha" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba1?auto=format&fit=crop&w=400&q=80" alt="Iced Sea Salt Mocha" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Iced Sea Salt Mocha</h4>
                             <p>A trendy mix of dark chocolate, espresso, and a pinch of salt.</p>
@@ -137,7 +139,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/menu_the_jubilee_iced_americano.jpg" alt="The Jubilee Iced Americano" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" alt="The Jubilee Iced Americano" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The "Jubilee" Iced Americano</h4>
                             <p>A refreshing, clean black coffee over crystal ice.</p>
@@ -147,7 +149,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/coffee.png" alt="Coconut Milk Brew" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1546487201-948fcd6d0152?auto=format&fit=crop&w=400&q=80" alt="Coconut Milk Brew" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Coconut Milk Brew</h4>
                             <p>A vegan-friendly, creamy tropical twist on iced coffee.</p>
@@ -159,7 +161,7 @@
 
                     <!-- ================= TOASTS CATEGORY ================= -->
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="The Avocado Smash" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5e?auto=format&fit=crop&w=400&q=80" alt="The Avocado Smash" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Avocado Smash</h4>
                             <p>Sourdough, Hass avocado, chili flakes, & feta.</p>
@@ -169,7 +171,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="Truffle Mushroom Melt" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1554432135-263a557ef228?auto=format&fit=crop&w=400&q=80" alt="Truffle Mushroom Melt" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Truffle Mushroom Melt</h4>
                             <p>Wild mushrooms, truffle oil, & melted Gruyère.</p>
@@ -179,7 +181,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="Pesto Caprese Toast" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1508210332851-409fcb854350?auto=format&fit=crop&w=400&q=80" alt="Pesto Caprese Toast" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Pesto Caprese Toast</h4>
                             <p>Fresh basil pesto, buffalo mozzarella, & cherry tomatoes.</p>
@@ -189,7 +191,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="Spiced Paneer Sourdough" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1626200926715-b590e87b7a13?auto=format&fit=crop&w=400&q=80" alt="Spiced Paneer Sourdough" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Spiced Paneer Sourdough</h4>
                             <p>Tandoori-spiced paneer, mint chutney, & pickled onions.</p>
@@ -199,7 +201,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="Burrata & Honey Fig" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8e9e533?auto=format&fit=crop&w=400&q=80" alt="Burrata & Honey Fig" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Burrata & Honey Fig</h4>
                             <p>Creamy burrata, fresh figs, & a drizzle of organic honey.</p>
@@ -209,7 +211,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/toast.png" alt="The Classic Nutella Berry" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1484723091792-c6436d3956bc?auto=format&fit=crop&w=400&q=80" alt="The Classic Nutella Berry" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Classic Nutella Berry</h4>
                             <p>Thick brioche toast, Nutella, strawberries, & sea salt.</p>
@@ -221,7 +223,7 @@
 
                     <!-- ================= DRINKS CATEGORY ================= -->
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/menu_hyderabad_sunset_fizz.jpg" alt="Hyderabad Sunset Fizz" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80" alt="Hyderabad Sunset Fizz" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Hyderabad Sunset Fizz</h4>
                             <p>Orange, grenadine, and sparkling soda with mint.</p>
@@ -231,7 +233,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/drink.png" alt="Passionfruit Iced Tea" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1498604313262-b91c01ffbb10?auto=format&fit=crop&w=400&q=80" alt="Passionfruit Iced Tea" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Passionfruit Iced Tea</h4>
                             <p>Hand-shaken black tea with fresh passionfruit pulp.</p>
@@ -241,7 +243,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/menu_blueberry_basil_lemonade.jpg" alt="Blueberry Basil Lemonade" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=400&q=80" alt="Blueberry Basil Lemonade" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Blueberry Basil Lemonade</h4>
                             <p>Real muddled blueberries and a hint of fresh basil.</p>
@@ -251,7 +253,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/drink.png" alt="The Green Detox" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1610970881699-44a5587ce578?auto=format&fit=crop&w=400&q=80" alt="The Green Detox" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Green Detox</h4>
                             <p>Cold-pressed green apple, celery, and cucumber.</p>
@@ -261,7 +263,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/menu_wild_rose___lychee_cooler.jpg" alt="Wild Rose & Lychee Cooler" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80" alt="Wild Rose & Lychee Cooler" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Wild Rose & Lychee Cooler</h4>
                             <p>A floral, fragrant local favorite with crushed ice.</p>
@@ -271,7 +273,7 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/menu_hyderabad_hazelnut_frapp_.jpg" alt="Belgian Dark Chocolate Shake" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80" alt="Belgian Dark Chocolate Shake" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Belgian Dark Chocolate Shake</h4>
                             <p>Rich 70% dark chocolate blended with vanilla bean.</p>
@@ -282,7 +284,7 @@
                     </div>
                     <!-- Pro-Tip Bonus Item -->
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/menu_seasonal_mango___mint_splash.jpg" alt="Seasonal Mango & Mint Splash" class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=400&q=80" alt="Seasonal Mango & Mint Splash" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Seasonal Mango & Mint Splash</h4>
                             <p>A refreshing local favorite crafted with fresh mango pulp and crushed mint.</p>
@@ -350,3 +352,8 @@
     <script src="script.js"></script>
 </body>
 </html>
+"""
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+print("index.html fully regenerated.")
