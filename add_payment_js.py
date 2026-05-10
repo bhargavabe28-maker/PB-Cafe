@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+js_content = """document.addEventListener('DOMContentLoaded', () => {
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
@@ -201,3 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+"""
+
+with open('script.js', 'w', encoding='utf-8') as f:
+    f.write(js_content)
+print("Updated script.js completely")
