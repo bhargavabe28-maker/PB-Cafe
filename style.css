@@ -180,64 +180,98 @@ body {
 }
 
 .menu-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
 }
 
 .menu-category h3 {
-    font-family: var(--font-serif);
-    font-size: 2rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
     color: var(--charcoal-grey);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid rgba(139, 90, 43, 0.2);
+    border-bottom: 1px solid rgba(45, 45, 45, 0.1);
 }
 
 .menu-grid {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .menu-item {
-    padding: 1.5rem;
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.2rem;
     background: var(--cream);
-    border-radius: 8px;
+    border-radius: 12px;
     transition: var(--transition-smooth);
-    border-left: 4px solid transparent;
+    border: 1px solid rgba(45, 45, 45, 0.05);
+    align-items: flex-start;
 }
 
 .menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-left-color: var(--warm-oak);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.item-header {
+.menu-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.menu-item-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.menu-item-content h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--charcoal-grey);
+}
+
+.menu-item-content p {
+    font-size: 0.9rem;
+    color: var(--charcoal-light);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.menu-item-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.item-header h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
+    margin-top: auto;
 }
 
 .price {
-    font-family: var(--font-serif);
     font-weight: 700;
-    color: var(--warm-oak);
-    font-size: 1.2rem;
+    color: var(--charcoal-grey);
+    font-size: 1.1rem;
 }
 
-.menu-item p {
-    font-size: 0.95rem;
-    color: var(--charcoal-light);
+.buy-btn {
+    text-decoration: none;
+    color: var(--charcoal-grey);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.buy-btn:hover {
+    color: var(--warm-oak);
 }
 
 /* About Section */
