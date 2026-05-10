@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PB Cafe - A minimalist and modern urban coffee house featuring signature brews and handcrafted toasts.">
+    <meta name="description"
+        content="PB Cafe - A minimalist and modern urban coffee house featuring signature brews and handcrafted toasts.">
     <title>PB Cafe | Modern Urban Coffee House</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav class="navbar">
-        <div class="logo">PB Cafe.</div>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="PB Cafe Logo" class="nav-logo-img">
+        </div>
         <div class="nav-links">
             <a href="#hero">Home</a>
             <a href="#menu">Menu</a>
@@ -34,17 +41,20 @@
             <h2>Our Offerings</h2>
             <p>Curated for the modern palate.</p>
         </div>
-        
+
         <div class="menu-container">
             <!-- Tier 1: Category Selection -->
             <div id="category-selection" class="category-selection">
-                <button class="category-card" data-category="coffee" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/coffee.png');">
+                <button class="category-card" data-category="coffee"
+                    style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/coffee.png');">
                     <h3>Coffee</h3>
                 </button>
-                <button class="category-card" data-category="toasts" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/toast.png');">
+                <button class="category-card" data-category="toasts"
+                    style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/toast.png');">
                     <h3>Toasts</h3>
                 </button>
-                <button class="category-card" data-category="drinks" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/drink.png');">
+                <button class="category-card" data-category="drinks"
+                    style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/drink.png');">
                     <h3>Drinks</h3>
                 </button>
             </div>
@@ -55,219 +65,257 @@
                     <button id="back-to-categories" class="back-btn">&larr; Back to Categories</button>
                     <h3 id="current-category-title" class="category-title">Category</h3>
                 </div>
-                
+
                 <div class="menu-grid" id="menu-grid">
                     <!-- ================= COFFEE CATEGORY ================= -->
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_the_araku_signature_latte.jpg" alt="The Araku Signature Latte" class="menu-item-img">
+                        <img src="assets/images/dish_the_araku_signature_latte.jpg" alt="The Araku Signature Latte"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Araku Signature Latte</h4>
                             <p>Smooth, locally sourced, and naturally sweet.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹450</span>
-                                <button class="order-btn" data-item="The Araku Signature Latte" data-price="450">Order It</button>
+                                <button class="order-btn" data-item="The Araku Signature Latte" data-price="450">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_banjara_hills_dark_roast.jpg" alt="Banjara Hills Dark Roast" class="menu-item-img">
+                        <img src="assets/images/dish_banjara_hills_dark_roast.jpg" alt="Banjara Hills Dark Roast"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Banjara Hills Dark Roast</h4>
                             <p>A bold, intense cup perfect for the city's morning rush.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹350</span>
-                                <button class="order-btn" data-item="Banjara Hills Dark Roast" data-price="350">Order It</button>
+                                <button class="order-btn" data-item="Banjara Hills Dark Roast" data-price="350">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_velvet_flat_white.jpg" alt="Velvet Flat White" class="menu-item-img">
+                        <img src="assets/images/dish_velvet_flat_white.jpg" alt="Velvet Flat White"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Velvet Flat White</h4>
                             <p>A silky, high-end version of a latte with a stronger espresso hit.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹420</span>
-                                <button class="order-btn" data-item="Velvet Flat White" data-price="420">Order It</button>
+                                <button class="order-btn" data-item="Velvet Flat White" data-price="420">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_malabar_spice_cappuccino.jpg" alt="Malabar Spice Cappuccino" class="menu-item-img">
+                        <img src="assets/images/dish_malabar_spice_cappuccino.jpg" alt="Malabar Spice Cappuccino"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Malabar Spice Cappuccino</h4>
                             <p>Using Monsoon Malabar beans with a hint of local cinnamon.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹390</span>
-                                <button class="order-btn" data-item="Malabar Spice Cappuccino" data-price="390">Order It</button>
+                                <button class="order-btn" data-item="Malabar Spice Cappuccino" data-price="390">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_artisanal_pour_over.jpg" alt="Artisanal Pour-Over" class="menu-item-img">
+                        <img src="assets/images/dish_artisanal_pour_over.jpg" alt="Artisanal Pour-Over"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Artisanal Pour-Over</h4>
                             <p>For the true coffee nerd; features a rotating single-origin bean.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹480</span>
-                                <button class="order-btn" data-item="Artisanal Pour-Over" data-price="480">Order It</button>
+                                <button class="order-btn" data-item="Artisanal Pour-Over" data-price="480">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_midnight_cold_brew.jpg" alt="Midnight Cold Brew" class="menu-item-img">
+                        <img src="assets/images/dish_midnight_cold_brew.jpg" alt="Midnight Cold Brew"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Midnight Cold Brew</h4>
                             <p>Steeped for 18 hours for a smooth, chocolatey finish.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹400</span>
-                                <button class="order-btn" data-item="Midnight Cold Brew" data-price="400">Order It</button>
+                                <button class="order-btn" data-item="Midnight Cold Brew" data-price="400">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_hyderabad_hazelnut_frapp_.jpg" alt="Hyderabad Hazelnut Frappé" class="menu-item-img">
+                        <img src="assets/images/dish_hyderabad_hazelnut_frapp_.jpg" alt="Hyderabad Hazelnut Frappé"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Hyderabad Hazelnut Frappé</h4>
                             <p>A crowd favorite—rich, icy, and nutty.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹450</span>
-                                <button class="order-btn" data-item="Hyderabad Hazelnut Frappé" data-price="450">Order It</button>
+                                <button class="order-btn" data-item="Hyderabad Hazelnut Frappé" data-price="450">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_iced_sea_salt_mocha.jpg" alt="Iced Sea Salt Mocha" class="menu-item-img">
+                        <img src="assets/images/dish_iced_sea_salt_mocha.jpg" alt="Iced Sea Salt Mocha"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Iced Sea Salt Mocha</h4>
                             <p>A trendy mix of dark chocolate, espresso, and a pinch of salt.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹460</span>
-                                <button class="order-btn" data-item="Iced Sea Salt Mocha" data-price="460">Order It</button>
+                                <button class="order-btn" data-item="Iced Sea Salt Mocha" data-price="460">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_the_jubilee_iced_americano.jpg" alt="The Jubilee Iced Americano" class="menu-item-img">
+                        <img src="assets/images/dish_the_jubilee_iced_americano.jpg" alt="The Jubilee Iced Americano"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The "Jubilee" Iced Americano</h4>
                             <p>A refreshing, clean black coffee over crystal ice.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹350</span>
-                                <button class="order-btn" data-item="The Jubilee Iced Americano" data-price="350">Order It</button>
+                                <button class="order-btn" data-item="The Jubilee Iced Americano" data-price="350">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-coffee">
-                        <img src="assets/images/dish_coconut_milk_brew.jpg" alt="Coconut Milk Brew" class="menu-item-img">
+                        <img src="assets/images/dish_coconut_milk_brew.jpg" alt="Coconut Milk Brew"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Coconut Milk Brew</h4>
                             <p>A vegan-friendly, creamy tropical twist on iced coffee.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹430</span>
-                                <button class="order-btn" data-item="Coconut Milk Brew" data-price="430">Order It</button>
+                                <button class="order-btn" data-item="Coconut Milk Brew" data-price="430">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- ================= TOASTS CATEGORY ================= -->
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_the_avocado_smash.jpg" alt="The Avocado Smash" class="menu-item-img">
+                        <img src="assets/images/dish_the_avocado_smash.jpg" alt="The Avocado Smash"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Avocado Smash</h4>
                             <p>Sourdough, Hass avocado, chili flakes, & feta.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹390</span>
-                                <button class="order-btn" data-item="The Avocado Smash" data-price="390">Order It</button>
+                                <button class="order-btn" data-item="The Avocado Smash" data-price="390">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_truffle_mushroom_melt.jpg" alt="Truffle Mushroom Melt" class="menu-item-img">
+                        <img src="assets/images/dish_truffle_mushroom_melt.jpg" alt="Truffle Mushroom Melt"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Truffle Mushroom Melt</h4>
                             <p>Wild mushrooms, truffle oil, & melted Gruyère.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹480</span>
-                                <button class="order-btn" data-item="Truffle Mushroom Melt" data-price="480">Order It</button>
+                                <button class="order-btn" data-item="Truffle Mushroom Melt" data-price="480">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_pesto_caprese_toast.jpg" alt="Pesto Caprese Toast" class="menu-item-img">
+                        <img src="assets/images/dish_pesto_caprese_toast.jpg" alt="Pesto Caprese Toast"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Pesto Caprese Toast</h4>
                             <p>Fresh basil pesto, buffalo mozzarella, & cherry tomatoes.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹410</span>
-                                <button class="order-btn" data-item="Pesto Caprese Toast" data-price="410">Order It</button>
+                                <button class="order-btn" data-item="Pesto Caprese Toast" data-price="410">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_spiced_paneer_sourdough.jpg" alt="Spiced Paneer Sourdough" class="menu-item-img">
+                        <img src="assets/images/dish_spiced_paneer_sourdough.jpg" alt="Spiced Paneer Sourdough"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Spiced Paneer Sourdough</h4>
                             <p>Tandoori-spiced paneer, mint chutney, & pickled onions.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹400</span>
-                                <button class="order-btn" data-item="Spiced Paneer Sourdough" data-price="400">Order It</button>
+                                <button class="order-btn" data-item="Spiced Paneer Sourdough" data-price="400">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_burrata___honey_fig.jpg" alt="Burrata & Honey Fig" class="menu-item-img">
+                        <img src="assets/images/dish_burrata___honey_fig.jpg" alt="Burrata & Honey Fig"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Burrata & Honey Fig</h4>
                             <p>Creamy burrata, fresh figs, & a drizzle of organic honey.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹520</span>
-                                <button class="order-btn" data-item="Burrata & Honey Fig" data-price="520">Order It</button>
+                                <button class="order-btn" data-item="Burrata & Honey Fig" data-price="520">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-toasts">
-                        <img src="assets/images/dish_the_classic_nutella_berry.jpg" alt="The Classic Nutella Berry" class="menu-item-img">
+                        <img src="assets/images/dish_the_classic_nutella_berry.jpg" alt="The Classic Nutella Berry"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>The Classic Nutella Berry</h4>
                             <p>Thick brioche toast, Nutella, strawberries, & sea salt.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹380</span>
-                                <button class="order-btn" data-item="The Classic Nutella Berry" data-price="380">Order It</button>
+                                <button class="order-btn" data-item="The Classic Nutella Berry" data-price="380">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- ================= DRINKS CATEGORY ================= -->
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_hyderabad_sunset_fizz.jpg" alt="Hyderabad Sunset Fizz" class="menu-item-img">
+                        <img src="assets/images/dish_hyderabad_sunset_fizz.jpg" alt="Hyderabad Sunset Fizz"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Hyderabad Sunset Fizz</h4>
                             <p>Orange, grenadine, and sparkling soda with mint.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹350</span>
-                                <button class="order-btn" data-item="Hyderabad Sunset Fizz" data-price="350">Order It</button>
+                                <button class="order-btn" data-item="Hyderabad Sunset Fizz" data-price="350">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_passionfruit_iced_tea.jpg" alt="Passionfruit Iced Tea" class="menu-item-img">
+                        <img src="assets/images/dish_passionfruit_iced_tea.jpg" alt="Passionfruit Iced Tea"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Passionfruit Iced Tea</h4>
                             <p>Hand-shaken black tea with fresh passionfruit pulp.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹380</span>
-                                <button class="order-btn" data-item="Passionfruit Iced Tea" data-price="380">Order It</button>
+                                <button class="order-btn" data-item="Passionfruit Iced Tea" data-price="380">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_blueberry_basil_lemonade.jpg" alt="Blueberry Basil Lemonade" class="menu-item-img">
+                        <img src="assets/images/dish_blueberry_basil_lemonade.jpg" alt="Blueberry Basil Lemonade"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Blueberry Basil Lemonade</h4>
                             <p>Real muddled blueberries and a hint of fresh basil.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹390</span>
-                                <button class="order-btn" data-item="Blueberry Basil Lemonade" data-price="390">Order It</button>
+                                <button class="order-btn" data-item="Blueberry Basil Lemonade" data-price="390">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
@@ -283,36 +331,42 @@
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_wild_rose___lychee_cooler.jpg" alt="Wild Rose & Lychee Cooler" class="menu-item-img">
+                        <img src="assets/images/dish_wild_rose___lychee_cooler.jpg" alt="Wild Rose & Lychee Cooler"
+                            class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Wild Rose & Lychee Cooler</h4>
                             <p>A floral, fragrant local favorite with crushed ice.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹390</span>
-                                <button class="order-btn" data-item="Wild Rose & Lychee Cooler" data-price="390">Order It</button>
+                                <button class="order-btn" data-item="Wild Rose & Lychee Cooler" data-price="390">Order
+                                    It</button>
                             </div>
                         </div>
                     </div>
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_belgian_dark_chocolate_shake.jpg" alt="Belgian Dark Chocolate Shake" class="menu-item-img">
+                        <img src="assets/images/dish_belgian_dark_chocolate_shake.jpg"
+                            alt="Belgian Dark Chocolate Shake" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Belgian Dark Chocolate Shake</h4>
                             <p>Rich 70% dark chocolate blended with vanilla bean.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹450</span>
-                                <button class="order-btn" data-item="Belgian Dark Chocolate Shake" data-price="450">Order It</button>
+                                <button class="order-btn" data-item="Belgian Dark Chocolate Shake"
+                                    data-price="450">Order It</button>
                             </div>
                         </div>
                     </div>
                     <!-- Pro-Tip Bonus Item -->
                     <div class="menu-item category-drinks">
-                        <img src="assets/images/dish_seasonal_mango___mint_splash.jpg" alt="Seasonal Mango & Mint Splash" class="menu-item-img">
+                        <img src="assets/images/dish_seasonal_mango___mint_splash.jpg"
+                            alt="Seasonal Mango & Mint Splash" class="menu-item-img">
                         <div class="menu-item-content">
                             <h4>Seasonal Mango & Mint Splash</h4>
                             <p>A refreshing local favorite crafted with fresh mango pulp and crushed mint.</p>
                             <div class="menu-item-footer">
                                 <span class="price">₹420</span>
-                                <button class="order-btn" data-item="Seasonal Mango & Mint Splash" data-price="420">Order It</button>
+                                <button class="order-btn" data-item="Seasonal Mango & Mint Splash"
+                                    data-price="420">Order It</button>
                             </div>
                         </div>
                     </div>
@@ -325,19 +379,28 @@
         <div class="about-grid">
             <div class="about-text">
                 <h2>Our Philosophy: <br><span>People & Beans</span></h2>
-                <p>At PB Cafe, we believe that great coffee is just the beginning. Our foundation is built on two pillars: the exceptional people who walk through our doors, and the ethically sourced beans we meticulously roast.</p>
-                <p>Our minimalist space is designed to strip away the noise of the city, offering you a moment of clarity and connection. Every cup we pour is a testament to our dedication to the craft, community, and the simple joy of a perfect brew.</p>
-                <p style="margin-top: 2rem; font-family: var(--font-serif); font-size: 1.3rem; color: var(--warm-oak); font-style: italic;">Visit the cafe and make some memories by making a fingerprint with your partner.</p>
+                <p>At PB Cafe, we believe that great coffee is just the beginning. Our foundation is built on two
+                    pillars: the exceptional people who walk through our doors, and the ethically sourced beans we
+                    meticulously roast.</p>
+                <p>Our minimalist space is designed to strip away the noise of the city, offering you a moment of
+                    clarity and connection. Every cup we pour is a testament to our dedication to the craft, community,
+                    and the simple joy of a perfect brew.</p>
+                <p
+                    style="margin-top: 2rem; font-family: var(--font-serif); font-size: 1.3rem; color: var(--warm-oak); font-style: italic;">
+                    Visit the cafe and make some memories by making a fingerprint with your partner.</p>
             </div>
             <div class="about-image-wrapper">
-                <img src="assets/images/fingerprint_serenade.png" alt="Fingerprint Serenade" class="about-img" style="width:100%; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); transform: rotate(2deg); transition: transform 0.3s;">
+                <img src="assets/images/fingerprint_serenade.png" alt="Fingerprint Serenade" class="about-img"
+                    style="width:100%; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1); transform: rotate(2deg); transition: transform 0.3s;">
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">PB Cafe.</div>
+            <div class="footer-logo">
+                <img src="assets/images/logo.png" alt="PB Cafe Logo" class="footer-logo-img">
+            </div>
             <p>&copy; 2026 PB Cafe. All rights reserved.</p>
             <div class="socials">
                 <a href="#">Instagram</a>
@@ -351,7 +414,7 @@
         <div class="modal-content">
             <button class="close-modal">&times;</button>
             <h2 id="modal-item-name">Order Item</h2>
-            
+
             <form id="order-form">
                 <!-- Step 1: Details -->
                 <div id="step-1-details">
@@ -359,24 +422,24 @@
                         <button class="type-btn active" data-type="dine-in">Dine-In</button>
                         <button class="type-btn" data-type="delivery">Home Delivery</button>
                     </div>
-                    
+
                     <div id="dine-in-fields" class="form-group">
                         <label for="table-number">Table Number</label>
                         <input type="number" id="table-number" placeholder="Enter your table number" required>
                     </div>
-                    
+
                     <div id="delivery-fields" class="form-group hidden">
                         <label for="address">Delivery Address</label>
                         <textarea id="address" placeholder="Enter your full delivery address" rows="3"></textarea>
                     </div>
-                    
+
                     <button type="button" id="proceed-to-pay-btn" class="confirm-order-btn">Proceed to Payment</button>
                 </div>
 
                 <!-- Step 2: Payment -->
                 <div id="step-2-payment" class="hidden">
                     <h3 class="payment-title">Amount to Pay: <span id="payment-amount">₹0</span></h3>
-                    
+
                     <div class="payment-methods">
                         <button type="button" class="pay-method-btn active" data-method="card">Card</button>
                         <button type="button" class="pay-method-btn" data-method="upi">UPI</button>
@@ -412,13 +475,13 @@
                     <button type="submit" id="final-pay-btn" class="confirm-order-btn pay-submit-btn">Pay Now</button>
                     <button type="button" id="back-to-details-btn" class="back-link-btn">&larr; Back to Details</button>
                 </div>
-                
+
                 <!-- Loading State -->
                 <div id="payment-loading" class="payment-loading hidden">
                     <div class="spinner"></div>
                     <p>Processing Payment...</p>
                 </div>
-                
+
                 <!-- Success State -->
                 <div id="payment-success" class="payment-success hidden">
                     <div class="success-icon">✓</div>
@@ -511,4 +574,5 @@
     </script>
     <script src="script.js"></script>
 </body>
+
 </html>
