@@ -264,8 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 ordersBody.innerHTML = '';
                 snapshot.forEach((doc) => {
                     const data = doc.data();
+                    const orderId = doc.id;
                     const time = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Just now';
                     
+                    const statusBadge = `<span class="status-badge status-${data.status}">${data.status}</span>`;
+                    const actionBtn = data.status === 'pending' ? 
+                        `<button class="order-btn" style="padding:0.3rem 0.6rem; font-size:0.8rem;" onclick="completeOrder('${orderId}')">Complete</button>` : 
+                        '-';
+
                     const row = `
                         <tr>
                             <td>${time}</td>
@@ -273,7 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <td>${data.type}</td>
                             <td>${data.type === 'Dine-In' ? 'Table ' + data.tableNo : data.address}</td>
                             <td>${data.transactionId}</td>
-                            <td><span class="status-badge status-${data.status}">${data.status}</span></td>
+                            <td>${statusBadge}</td>
+                            <td>${actionBtn}</td>
                         </tr>
                     `;
                     ordersBody.innerHTML += row;
@@ -282,10 +289,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Order Actions ---
+    window.completeOrder = async function(orderId) {
+        if (!window.fbDB) return;
+        try {
+            const orderRef = window.fbDoc(window.fbDB, "orders", orderId);
+            await window.fbUpdateDoc(orderRef, { status: 'completed' });
+        } catch (err) {
+            console.error('Failed to complete order:', err);
+        }
+    };
+
+    async function isTransactionDuplicate(txId) {
+        if (!window.fbDB) return false;
+        try {
+            const ordersCol = window.fbCollection(window.fbDB, "orders");
+            const q = window.fbQuery(ordersCol, window.fbWhere("transactionId", "==", txId));
+            const querySnapshot = await window.fbGetDocs(q);
+            return !querySnapshot.empty;
+        } catch (err) {
+            console.error('Duplicate check failed:', err);
+            return false;
+        }
+    }
+
     // Submit Payment
     if (orderForm) {
         orderForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            const transactionId = document.getElementById('transaction-id').value;
+
+            // Check for duplicates
+            const isDuplicate = await isTransactionDuplicate(transactionId);
+            if (isDuplicate) {
+                alert('⚠️ This Transaction ID has already been used. Please enter a valid unique Transaction ID or verify your payment.');
+                return;
+            }
 
             // Gather order details
             const itemName = modalItemName.textContent.replace('Order: ', '');
@@ -295,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const address = document.getElementById('address').value;
             const activePayBtn = document.querySelector('.pay-method-btn.active');
             const paymentMethod = activePayBtn ? activePayBtn.textContent : 'Unknown';
-            const transactionId = document.getElementById('transaction-id').value;
 
             // Save to Firebase
             await saveOrderToFirebase({
