@@ -16,8 +16,10 @@
             <a href="#hero">Home</a>
             <a href="#menu">Menu</a>
             <a href="#about">About</a>
+            <a href="#" id="admin-link">Admin</a>
         </div>
     </nav>
+
 
     <header id="hero" class="hero">
         <div class="hero-content">
@@ -390,8 +392,21 @@
                     </div>
 
                     <div id="upi-fields" class="form-group hidden">
+                        <div class="qr-placeholder">
+                            <div class="qr-box">
+                                <span>Scan to Pay</span>
+                                <div class="qr-graphic"></div>
+                            </div>
+                            <p>Scan the QR code to pay via any UPI app</p>
+                        </div>
                         <label>UPI ID</label>
                         <input type="text" placeholder="username@upi">
+                    </div>
+
+                    <div class="form-group verification-group">
+                        <label for="transaction-id">Transaction Reference ID (UTR)</label>
+                        <input type="text" id="transaction-id" placeholder="Enter 12-digit Transaction ID" required>
+                        <small>Payment is verified manually using this ID.</small>
                     </div>
 
                     <button type="submit" id="final-pay-btn" class="confirm-order-btn pay-submit-btn">Pay Now</button>
@@ -414,6 +429,81 @@
         </div>
     </div>
 
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-modal" id="close-login-modal">&times;</button>
+            <h2>Staff Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="admin-id" placeholder="Enter Admin ID" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-password" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="confirm-order-btn">Login to Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Overlay -->
+    <div id="admin-dashboard" class="dashboard-overlay hidden">
+        <div class="dashboard-inner">
+            <div class="dashboard-header">
+                <h2>Order Management Dashboard</h2>
+                <button id="logout-btn" class="back-btn">Logout</button>
+            </div>
+            <div class="orders-table-wrapper">
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Item</th>
+                            <th>Type</th>
+                            <th>Details</th>
+                            <th>Transaction ID</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-body">
+                        <!-- Dynamic Content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Firebase Configuration (Replace with your actual config)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBsCiaMap92Z9T6mE6PopmCMEjDs_ybt9Y",
+            authDomain: "pb-cafe-dbfea.firebaseapp.com",
+            projectId: "pb-cafe-dbfea",
+            storageBucket: "pb-cafe-dbfea.firebasestorage.app",
+            messagingSenderId: "240799487331",
+            appId: "1:240799487331:web:c2139c4a875cbe03e6af56",
+            measurementId: "G-F63J2KXGHB"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Export to window for access in script.js
+        window.fbDB = db;
+        window.fbCollection = collection;
+        window.fbAddDoc = addDoc;
+        window.fbQuery = query;
+        window.fbOrderBy = orderBy;
+        window.fbOnSnapshot = onSnapshot;
+        window.fbServerTimestamp = serverTimestamp;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

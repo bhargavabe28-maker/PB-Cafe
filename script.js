@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const category = btn.getAttribute('data-category');
             const categoryName = btn.querySelector('h3').textContent;
-            
+
             // Update Title
             currentCategoryTitle.textContent = categoryName;
 
             // Hide all items first
             menuItems.forEach(item => item.style.display = 'none');
-            
+
             // Show items for this category
             const targetItems = document.querySelectorAll(`.category-${category}`);
             targetItems.forEach(item => item.style.display = 'flex');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Switch views
             categorySelection.classList.add('hidden');
             itemsView.classList.remove('hidden');
-            
+
             // Scroll to top of items view
             itemsView.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
@@ -64,14 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.querySelector('.close-modal');
     const orderBtns = document.querySelectorAll('.order-btn');
     const modalItemName = document.getElementById('modal-item-name');
-    
+
     // Step 1 Elements
     const step1Details = document.getElementById('step-1-details');
     const typeBtns = document.querySelectorAll('.type-btn');
     const dineInFields = document.getElementById('dine-in-fields');
     const deliveryFields = document.getElementById('delivery-fields');
     const proceedToPayBtn = document.getElementById('proceed-to-pay-btn');
-    
+
     // Step 2 Elements
     const step2Payment = document.getElementById('step-2-payment');
     const paymentAmountText = document.getElementById('payment-amount');
@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const upiFields = document.getElementById('upi-fields');
     const backToDetailsBtn = document.getElementById('back-to-details-btn');
     const orderForm = document.getElementById('order-form');
-    
+
     // State Elements
     const paymentLoading = document.getElementById('payment-loading');
     const paymentSuccess = document.getElementById('payment-success');
-    
+
     let currentPrice = 0;
 
     // Reset Modal State
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         step2Payment.classList.add('hidden');
         paymentLoading.classList.add('hidden');
         paymentSuccess.classList.add('hidden');
-        if(orderForm) orderForm.reset();
+        if (orderForm) orderForm.reset();
     };
 
     // Open Modal
@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const itemName = btn.getAttribute('data-item');
             currentPrice = btn.getAttribute('data-price') || 400; // Fallback to 400 if missing
-            
+
             modalItemName.textContent = `Order: ${itemName}`;
             paymentAmountText.textContent = `₹${currentPrice}`;
             proceedToPayBtn.textContent = `Proceed to Payment (₹${currentPrice})`;
-            
+
             resetModal();
             modal.classList.remove('hidden');
         });
@@ -113,10 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close Modal
     const hideModal = () => modal.classList.add('hidden');
-    if(closeModal) {
+    if (closeModal) {
         closeModal.addEventListener('click', hideModal);
     }
-    if(modal) {
+    if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) hideModal();
         });
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Go to Payment Step
     proceedToPayBtn.addEventListener('click', () => {
         // Simple HTML5 validation check
-        if(!orderForm.checkValidity()) {
+        if (!orderForm.checkValidity()) {
             orderForm.reportValidity();
             return;
         }
@@ -179,11 +179,108 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Submit Payment
-    if(orderForm) {
-        orderForm.addEventListener('submit', (e) => {
+
+    // --- Admin & Firebase Dashboard Logic ---
+    const adminLink = document.getElementById('admin-link');
+    const adminLoginModal = document.getElementById('admin-login-modal');
+    const closeLoginBtn = document.getElementById('close-login-modal');
+    const loginForm = document.getElementById('login-form');
+    const adminDashboard = document.getElementById('admin-dashboard');
+    const logoutBtn = document.getElementById('logout-btn');
+    const ordersBody = document.getElementById('orders-body');
+
+    const ADMIN_CREDS = { id: 'Admin0327', password: 'PB0327' };
+
+    // Toggle Admin Login Modal
+    if (adminLink) {
+        adminLink.addEventListener('click', (e) => {
             e.preventDefault();
-            
+            adminLoginModal.classList.remove('hidden');
+        });
+    }
+
+    if (closeLoginBtn) {
+        closeLoginBtn.addEventListener('click', () => {
+            adminLoginModal.classList.add('hidden');
+        });
+    }
+
+    // Admin Login Logic
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('admin-id').value;
+            const pass = document.getElementById('admin-password').value;
+
+            if (id === ADMIN_CREDS.id && pass === ADMIN_CREDS.password) {
+                adminLoginModal.classList.add('hidden');
+                adminDashboard.classList.remove('hidden');
+                loadOrders(); // Fetch from Firebase
+            } else {
+                alert('Invalid Admin ID or Password');
+            }
+        });
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            adminDashboard.classList.add('hidden');
+        });
+    }
+
+    // Firebase Data Saving Logic
+    async function saveOrderToFirebase(orderData) {
+        if (!window.fbDB) {
+            console.warn('Firebase not initialized. Check your config in index.html');
+            return;
+        }
+        try {
+            const ordersCol = window.fbCollection(window.fbDB, "orders");
+            await window.fbAddDoc(ordersCol, {
+                ...orderData,
+                timestamp: window.fbServerTimestamp(),
+                status: 'pending'
+            });
+            console.log('Order saved to Firebase');
+        } catch (err) {
+            console.error('Firebase Save Error:', err);
+        }
+    }
+
+    // Firebase Data Loading Logic
+    function loadOrders() {
+        if (!window.fbDB) return;
+        const ordersCol = window.fbCollection(window.fbDB, "orders");
+        const q = window.fbQuery(ordersCol, window.fbOrderBy("timestamp", "desc"));
+
+        window.fbOnSnapshot(q, (snapshot) => {
+            if (ordersBody) {
+                ordersBody.innerHTML = '';
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const time = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'Just now';
+                    
+                    const row = `
+                        <tr>
+                            <td>${time}</td>
+                            <td>${data.item}</td>
+                            <td>${data.type}</td>
+                            <td>${data.type === 'Dine-In' ? 'Table ' + data.tableNo : data.address}</td>
+                            <td>${data.transactionId}</td>
+                            <td><span class="status-badge status-${data.status}">${data.status}</span></td>
+                        </tr>
+                    `;
+                    ordersBody.innerHTML += row;
+                });
+            }
+        });
+    }
+
+    // Submit Payment
+    if (orderForm) {
+        orderForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
             // Gather order details
             const itemName = modalItemName.textContent.replace('Order: ', '');
             const activeTypeBtn = document.querySelector('.type-btn.active');
@@ -192,41 +289,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const address = document.getElementById('address').value;
             const activePayBtn = document.querySelector('.pay-method-btn.active');
             const paymentMethod = activePayBtn ? activePayBtn.textContent : 'Unknown';
+            const transactionId = document.getElementById('transaction-id').value;
 
-            // Construct WhatsApp message
-            let waMessage = `*New Order from PB Cafe!* ☕\n\n`;
-            waMessage += `*Item:* ${itemName}\n`;
-            waMessage += `*Price:* ₹${currentPrice}\n`;
-            waMessage += `*Type:* ${orderType}\n`;
-            
-            if (orderType === 'Dine-In') {
-                waMessage += `*Table No:* ${tableNo}\n`;
-            } else {
-                waMessage += `*Address:* ${address}\n`;
-            }
-            
-            waMessage += `*Payment Method:* ${paymentMethod}\n`;
+            // Save to Firebase (Real-time update)
+            await saveOrderToFirebase({
+                item: itemName,
+                price: currentPrice,
+                type: orderType,
+                tableNo: tableNo,
+                address: address,
+                paymentMethod: paymentMethod,
+                transactionId: transactionId
+            });
 
-            const encodedMessage = encodeURIComponent(waMessage);
-            const whatsappUrl = `https://wa.me/919849681592?text=${encodedMessage}`;
-            
-            // Show loading
+            // Immediate Action: Show success state
             step2Payment.classList.add('hidden');
-            paymentLoading.classList.remove('hidden');
-            
-            // Simulate API delay
+            paymentSuccess.classList.remove('hidden');
+
+            // Auto close modal after 3 seconds
             setTimeout(() => {
-                paymentLoading.classList.add('hidden');
-                paymentSuccess.classList.remove('hidden');
-                
-                // Open WhatsApp in a new tab
-                window.open(whatsappUrl, '_blank');
-                
-                // Auto close after 3 seconds
-                setTimeout(() => {
-                    hideModal();
-                }, 3000);
-            }, 2000);
+                hideModal();
+            }, 3000);
         });
     }
 });

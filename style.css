@@ -756,3 +756,143 @@ footer {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Payment Verification Styles */
+.qr-placeholder {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border: 2px dashed #eee;
+}
+
+.qr-box {
+    width: 150px;
+    height: 150px;
+    background: white;
+    margin: 0 auto 1rem;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.qr-graphic {
+    width: 80%;
+    height: 80%;
+    background-image: linear-gradient(45deg, #333 25%, transparent 25%), 
+                      linear-gradient(-45deg, #333 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #333 75%), 
+                      linear-gradient(-45deg, transparent 75%, #333 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    opacity: 0.1;
+}
+
+.qr-box span {
+    position: absolute;
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: 600;
+}
+
+.verification-group {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.verification-group label {
+    color: var(--warm-oak);
+    font-weight: 700;
+}
+
+.verification-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Admin Dashboard Styles */
+.dashboard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    z-index: 3000;
+    overflow-y: auto;
+    padding: 2rem 5%;
+    animation: fadeIn 0.3s ease;
+}
+
+.dashboard-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--cream);
+}
+
+.dashboard-header h2 {
+    font-family: var(--font-serif);
+    color: var(--charcoal-grey);
+}
+
+.orders-table-wrapper {
+    overflow-x: auto;
+}
+
+#orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#orders-table th {
+    text-align: left;
+    padding: 1rem;
+    background: var(--charcoal-grey);
+    color: var(--white);
+    font-weight: 600;
+}
+
+#orders-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+#orders-table tr:hover {
+    background: #f9f9f9;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-pending { background: #fff3cd; color: #856404; }
+.status-completed { background: #d4edda; color: #155724; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
