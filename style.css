@@ -29,6 +29,10 @@ body {
     overflow-x: hidden;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* Navbar */
 .navbar {
     position: fixed;
@@ -103,6 +107,40 @@ body {
 
 .nav-links a:hover {
     color: var(--warm-oak);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--charcoal-grey);
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    transform-origin: left;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg);
 }
 
 /* Hero Section */
@@ -304,6 +342,26 @@ body {
     line-height: 1.2;
 }
 
+.about-quote {
+    margin-top: 2rem;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--warm-oak);
+    font-style: italic;
+}
+
+.fingerprint-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: rotate(2deg);
+    transition: transform 0.3s;
+}
+
+.fingerprint-img:hover {
+    transform: rotate(0deg);
+}
+
 .about-text h2 span {
     color: var(--warm-oak);
     font-style: italic;
@@ -430,8 +488,13 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
 
+@media (max-width: 992px) {
     .menu-container,
     .about-grid {
         grid-template-columns: 1fr;
@@ -441,19 +504,111 @@ footer {
     .hero h1 {
         font-size: 3.5rem;
     }
+
+    .about-grid {
+        gap: 4rem;
+    }
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        height: 90px;
+        padding: 0 5%;
+    }
+
+    .navbar.scrolled {
+        height: 70px;
+    }
+
+    .nav-logo-img {
+        height: 70px;
+    }
+
+    .navbar.scrolled .nav-logo-img {
+        height: 50px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cream);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
     }
 
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .footer-logo-img {
+        height: 120px !important; /* Fix for the massive footer logo */
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menu-item-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .order-type-selection {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cta-btn {
+        padding: 0.8rem 2rem;
+        width: 100%;
     }
 }
 
@@ -940,7 +1095,7 @@ footer {
 }
 
 .footer-logo-img {
-    height: 320px;
+    height: 180px; /* Reduced from 320px */
     width: auto;
     margin-bottom: 1.5rem;
     filter: brightness(0) invert(1); /* Makes the logo white for dark footer */
