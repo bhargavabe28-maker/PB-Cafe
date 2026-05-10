@@ -478,7 +478,7 @@
     <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, doc, updateDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // Firebase Configuration (Replace with your actual config)
         const firebaseConfig = {
@@ -503,6 +503,10 @@
         window.fbOrderBy = orderBy;
         window.fbOnSnapshot = onSnapshot;
         window.fbServerTimestamp = serverTimestamp;
+        window.fbDoc = window.fbDoc || doc;
+        window.fbUpdateDoc = window.fbUpdateDoc || updateDoc;
+        window.fbGetDocs = window.fbGetDocs || getDocs;
+        window.fbWhere = window.fbWhere || where;
     </script>
     <script src="script.js"></script>
 </body>
