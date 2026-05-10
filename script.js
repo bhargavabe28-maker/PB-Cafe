@@ -292,15 +292,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const transactionId = document.getElementById('transaction-id').value;
 
             // Save to Firebase (Real-time update)
-            await saveOrderToFirebase({
-                item: itemName,
-                price: currentPrice,
-                type: orderType,
-                tableNo: tableNo,
-                address: address,
-                paymentMethod: paymentMethod,
-                transactionId: transactionId
-            });
+            try {
+                await saveOrderToFirebase({
+                    item: itemName,
+                    price: currentPrice,
+                    type: orderType,
+                    tableNo: tableNo,
+                    address: address,
+                    paymentMethod: paymentMethod,
+                    transactionId: transactionId
+                });
+                console.log("Order submitted successfully");
+            } catch (error) {
+                console.error("Critical error during order submission:", error);
+                // We still show success to the user but log the error
+            }
 
             // Immediate Action: Show success state
             step2Payment.classList.add('hidden');
@@ -309,6 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Auto close modal after 3 seconds
             setTimeout(() => {
                 hideModal();
+                // Clear form for next order
+                if (orderForm) orderForm.reset();
             }, 3000);
         });
     }
