@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PB Cafe - A minimalist and modern urban coffee house featuring signature brews and handcrafted toasts.">
-    <title>PB Cafe | Modern Urban Coffee House</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">PB Cafe.</div>
-        <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About</a>
-        </div>
-    </nav>
+import re
 
-    <header id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Sip the Urban Vibe</h1>
-            <p>Minimalist aesthetic, maximum flavor. Welcome to your new daily ritual.</p>
-            <a href="#menu" class="cta-btn">Explore Menu</a>
-        </div>
-    </header>
+with open('index.html', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-    <section id="menu" class="menu-section">
-        <div class="section-header">
-            <h2>Our Offerings</h2>
-            <p>Curated for the modern palate.</p>
-        </div>
-        
-                <div class="menu-container">
+menu_replacement = """        <div class="menu-container">
             <!-- Tier 1: Category Selection -->
             <div id="category-selection" class="category-selection">
                 <button class="category-card" data-category="coffee" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('assets/images/coffee.png');">
@@ -172,34 +142,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </div>"""
 
-    <section id="about" class="about-section">
-        <div class="about-grid">
-            <div class="about-text">
-                <h2>Our Philosophy: <br><span>People & Beans</span></h2>
-                <p>At PB Cafe, we believe that great coffee is just the beginning. Our foundation is built on two pillars: the exceptional people who walk through our doors, and the ethically sourced beans we meticulously roast.</p>
-                <p>Our minimalist space is designed to strip away the noise of the city, offering you a moment of clarity and connection. Every cup we pour is a testament to our dedication to the craft, community, and the simple joy of a perfect brew.</p>
-            </div>
-            <div class="about-image-placeholder">
-                <div class="abstract-shape"></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">PB Cafe.</div>
-            <p>&copy; 2026 PB Cafe. All rights reserved.</p>
-            <div class="socials">
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-            </div>
-        </div>
-    </footer>
-
-    
+modal_content = """
     <!-- Order Modal -->
     <div id="order-modal" class="modal hidden">
         <div class="modal-content">
@@ -226,7 +171,14 @@
             </form>
         </div>
     </div>
+"""
 
-    <script src="script.js"></script>
-</body>
-</html>
+pattern = re.compile(r'<div class="menu-container">.*?(?=</section>)', re.DOTALL)
+content = pattern.sub(menu_replacement + '\n    ', content)
+
+content = content.replace('<script src="script.js"></script>', modal_content + '\n    <script src="script.js"></script>')
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Updated index.html successfully.")
